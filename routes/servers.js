@@ -26,11 +26,21 @@ router.post('/getSortedArticles', async ctx => {
 
 router.post('/getArticlesByState', async ctx => {
 	const { state, limit, offset } = ctx.request.body;
-	const articles = await db.query('select * from tb_article where state=?;', [state]);
-	ctx.body = {
-		code: 0,
-		data: {
-			articles
+	if (state === 0) {
+		const articles = await db.query('select * from tb_article;');
+		ctx.body = {
+			code: 0,
+			data: {
+				articles
+			}
+		}
+	} else {
+		const articles = await db.query('select * from tb_article where state=?;', [state]);
+		ctx.body = {
+			code: 0,
+			data: {
+				articles
+			}
 		}
 	}
 })
