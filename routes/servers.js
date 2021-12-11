@@ -1,5 +1,6 @@
 const router = require('koa-router')()
-const db = require('../util/db')
+const db = require('../util/db');
+const markdownToHtml = require('../util/markdownToHtml');
 
 router.prefix('/')
 
@@ -84,10 +85,14 @@ router.post('/getArticleById', async ctx => {
 	// 模糊搜索
 	const res = await db.query('select * from tb_article where id=?;', [id]);
 	if (res.length === 1) {
+		const article = {
+			...res[0],
+			content: markdownToHtml(res[0].content)
+		};
 		ctx.body = {
 			code: 0,
 			data: {
-				article: res[0]
+				article
 			}
 		}
 	} else {

@@ -25,7 +25,8 @@
     "mysql-pro": "^1.0.1",
     "nodemailer": "^6.7.2",
     "nodemailer-smtp-transport": "^2.7.4",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "remarkable": "^2.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
