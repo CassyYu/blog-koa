@@ -22,7 +22,13 @@ app.use(bodyparser())
 app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
-app.use(cors())
+app.use(cors({
+  origin: "http://localhost:3000",
+  maxAge: 5,
+  credentials: true,
+  allowMethods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  allowHeaders: ['Content-Type', 'Authorization', 'Accept', 'Token'],
+}));
 
 app.use(views(__dirname + '/views', {
   extension: 'pug'

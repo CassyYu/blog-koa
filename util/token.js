@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const privateKey = 'xsj';
+const privateKey = 'zy';
 const maxAge = 60;
 
 const tokenUtil = {

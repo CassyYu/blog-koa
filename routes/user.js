@@ -61,19 +61,7 @@ function sendMail(email, code) {
 		mailer(email, code, (state) => {
 			resolve(state);
 		})
-	}).then(state => {
-		if (state) {
-			ctx.body = {
-				code: 0,
-				message: "发送成功"
-			}
-		} else {
-			ctx.body = {
-				code: 1,
-				message: "失败"
-			}
-		}
-	})
+	});
 }
 
 router.post('/code', async ctx => {

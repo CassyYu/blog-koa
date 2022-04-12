@@ -1,4 +1,4 @@
-const router = require('koa-router')()
+const router = require('koa-router')();
 const db = require('../util/db');
 const markdownToHtml = require('../util/markdownToHtml');
 
@@ -106,7 +106,7 @@ router.post('/getArticleById', async ctx => {
 router.post('/getTags', async ctx => {
 	const { value, limit, offset } = ctx.request.body;
 	// 模糊搜索
-	const articles = await db.query('select * from tb_article where tag = ;');
+	const articles = await db.query('select * from tb_article');
 	ctx.body = {
 		code: 0,
 		data: {
